@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+main {
+    max-width: 1280px;
+    margin: 1rem auto;
+}
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Floating label basic styles */
+.floating-label {
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    font-size: 14px;
+    color: #888;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+  
+  /* When the input has a value or is focused, move the label */
+.has-value ~ .floating-label,
+  .floating-label.active {
+    top: -9px;
+    font-size: 12px;
+    color: grey;
+    background-color: white;
+    z-index: 1000;
+}
+  
+input:focus ~ .floating-label {
+    top: -9px;
+    font-size: 12px;
+    color: grey;
+    background-color: white;
+    z-index: 1000;
+}
