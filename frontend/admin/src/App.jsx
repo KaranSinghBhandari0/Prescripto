@@ -17,7 +17,6 @@ import AllDoctors from './pages/AllDoctors';
 import Doctor from './pages/Doctor';
 import DoctorLogin from './pages/DoctorLogin';
 import DoctorDashboard from './pages/DoctorDashboard';
-import Popup from './components/Popup'
 
 export default function App() {
     const { admin, doctor, checkAuth, checkingAuth } = useContext(AuthContext);
@@ -36,7 +35,6 @@ export default function App() {
 
 return (
     <>
-        <Popup />
         <Navbar/>
         <div className="flex">
             <Sidebar/>
