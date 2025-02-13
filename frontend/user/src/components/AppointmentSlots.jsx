@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import Spinner from './Spinner';
 
 import { StateContext } from '../context/StateContext';
 import { DoctorContext } from '../context/DoctorContext';
@@ -6,8 +7,9 @@ import { DoctorContext } from '../context/DoctorContext';
 export default function AppointmentSlots({ id }) {
     const { docSlots, getDayOfWeek, selectedDay, selectedTime, setSelectedDay, setSelectedTime } = useContext(StateContext);
     const { BookAppointment } = useContext(DoctorContext);
+    const [loading, setLoading] = useState(false);
 
-    const handleBooking = () => {
+    const handleBooking = async () => {
         if (selectedTime === null || !docSlots[selectedDay]) {
             alert('Please select a valid day and time slot before booking.');
             return;
@@ -26,7 +28,9 @@ export default function AppointmentSlots({ id }) {
         }
 
         const formattedDate = selectedDate.toLocaleDateString();
-        BookAppointment(id, formattedDay, formattedTime, formattedDate);
+        setLoading(true);
+        await BookAppointment(id, formattedDay, formattedTime, formattedDate);
+        setLoading(false);
     };
 
     return (
@@ -74,9 +78,9 @@ export default function AppointmentSlots({ id }) {
             </div>
 
             {/* Booking Button */}
-            <button className="bg-blue-700 text-white text-sm font-medium px-6 py-3 rounded-full my-6 mx-auto block"
-                onClick={handleBooking} disabled={!docSlots[selectedDay] || selectedTime === null} >
-                Book an appointment
+            <button className="bg-blue-700 text-white text-sm font-medium px-6 py-3 rounded-full my-6 mx-auto block w-48 h-11 flex justify-center items-center"
+                onClick={handleBooking} disabled={loading} >
+                {loading ? <Spinner/> : 'Book an appointment'}
             </button>
         </div>
     );

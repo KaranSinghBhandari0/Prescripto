@@ -25,7 +25,7 @@ export const DoctorProvider = ({ children }) => {
             navigate('/appointments');
         } catch (error) {
             console.log(error);
-            toast.error(error.response?.data?.msg || "Appointment booking failed");
+            toast.error(error.response.data.message || "Appointment booking failed");
         }
     };
 
@@ -48,7 +48,7 @@ export const DoctorProvider = ({ children }) => {
             filterDoctorsBySpeciality(res.data.doctor.speciality, id);
         } catch (error) {
             console.log(error);
-            toast.error(error.response?.data?.msg || "failed to fetch");
+            toast.error(error.response.data.message || "failed to fetch");
         }
     };
 

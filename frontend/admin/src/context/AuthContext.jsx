@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
             navigate('/dashboard');
         } catch (error) {
             console.log(error);
-            toast.error(error.response?.data?.msg || "Login failed");
+            toast.error(error.response.data.message || "Login failed");
         }
     }
 
@@ -30,10 +30,11 @@ export const AuthProvider = ({ children }) => {
             const res = await axiosInstance.post(`/doctor/login`, formData);
             toast.success('login successful');
             setDoctor(res.data.doctor);
+            localStorage.setItem('docId', res.data.doctor._id);
             navigate('/doctorDashboard');
         } catch (error) {
             console.log(error);
-            toast.error(error.response?.data?.msg || "Login failed");
+            toast.error(error.response.data.message || "Login failed");
         }
     }
 
@@ -46,7 +47,7 @@ export const AuthProvider = ({ children }) => {
             navigate('/');
         } catch (error) {
             console.log(error);
-            toast.error(error.response?.data?.msg || "Login failed");
+            toast.error(error.response.data.message || "Login failed");
         }
     }
 
@@ -54,11 +55,12 @@ export const AuthProvider = ({ children }) => {
         try {
             const res = await axiosInstance.get(`/doctor/logout`);
             toast.success('Logout Successfull');
+            localStorage.removeItem('docId');
             setDoctor(null);
             navigate('/');
         } catch (error) {
             console.log(error);
-            toast.error(error.response?.data?.msg || "Login failed");
+            toast.error(error.response.data.message || "Login failed");
         }
     }
 
@@ -93,7 +95,7 @@ export const AuthProvider = ({ children }) => {
             navigate('/allDoctors');
         } catch (error) {
             console.log(error);
-            toast.error(error.response?.data?.msg || "failed to add");
+            toast.error(error.response.data.message || "failed to add");
         }
     }
 
