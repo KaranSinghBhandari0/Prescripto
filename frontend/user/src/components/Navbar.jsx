@@ -18,7 +18,7 @@ export default function Navbar() {
                 <button className="hover:border-b-2 hover:border-blue-700" onClick={() => navigate('/')}>Home</button>
                 <button className="hover:border-b-2 hover:border-blue-700" onClick={() => navigate('/doctors/all')}>All Doctors</button>
                 <button className="hover:border-b-2 hover:border-blue-700" onClick={() => navigate('/contact')}>Contact</button>
-                <button className="hover:border-b-2 hover:border-blue-700" onClick={() => window.open('http://localhost:5174', '_blank', 'noopener,noreferrer')}>Admin</button>
+                <button className="hover:border-b-2 hover:border-blue-700" onClick={() => window.open('https://prescripto-admin-by-karan.vercel.app', '_blank', 'noopener,noreferrer')}>Admin</button>
             </div>
 
             <div className="flex gap-6">
