@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
             navigate('/');
         } catch (error) {
             console.error(error);
-            toast.error(error.response.data.msg || "Signup failed");
+            toast.error(error.response.data.message || "Signup failed");
         }
     };
 
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
             navigate('/');
         } catch (error) {
             console.log(error);
-            toast.error(error.response?.data?.msg || "Login failed");
+            toast.error(error.response.data.message || "Login failed");
         }
     };
     
@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
             navigate('/login');
         } catch (error) {
             console.log(error);
-            toast.error(error.response?.data?.msg || "Logout failed");
+            toast.error(error.response.data.message || "Logout failed");
         }
     };
 
@@ -79,11 +79,11 @@ export const AuthProvider = ({ children }) => {
     const cancelAppointment = async (appointmentId) => {
         try {
             const res = await axiosInstance.get(`/appointment/cancelAppointment/${appointmentId}`);
-            toast.success(res.data.msg);
+            toast.success(res.data.message);
             await getAppointments();
         } catch (error) {
             console.log(error);
-            toast.error(error.response?.data?.msg || "Failed to cancel appointment");
+            toast.error(error.response.data.message || "Failed to cancel appointment");
         }
     };
 
@@ -98,7 +98,7 @@ export const AuthProvider = ({ children }) => {
             setAppointments(res.data.appointments);
         } catch (error) {
             console.log(error);
-            toast.error(error.response.data.msg || "Failed to fetch appointments");
+            toast.error(error.response.data.message || "Failed to fetch appointments");
         }
     };
 

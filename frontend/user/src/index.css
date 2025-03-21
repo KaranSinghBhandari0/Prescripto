@@ -46,3 +46,17 @@ input:focus ~ .floating-label {
     background-color: white;
     z-index: 1000;
 }
+
+/* Remove autofill background color */
+input:-webkit-autofill {
+    background-color: white !important;
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+/* Ensures background remains white even on focus */
+input:-webkit-autofill:focus {
+    background-color: white !important;
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    box-shadow: 0 0 0px 1000px white inset !important;
+}

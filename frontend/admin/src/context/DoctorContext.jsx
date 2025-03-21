@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../lib/axiosInstance';
 import { toast } from 'react-toastify';
@@ -25,7 +25,7 @@ export const DoctorProvider = ({ children }) => {
             setDocInfo(res.data.doctor);
         } catch (error) {
             console.log(error);
-            toast.error(error.response?.data?.message || "failed to fetch");
+            toast.error(error.response.data.message || "failed to fetch");
         }
     };
 
@@ -54,10 +54,10 @@ export const DoctorProvider = ({ children }) => {
         try {
             const res = await axiosInstance.get(`/appointment/cancelDocAppointment/${appointmentId}`);
             await getDoctorAppointments(doctor.id);
-            toast.success(res.data.message);
+            toast.warning(res.data.message);
         } catch (error) {
             console.log(error);
-            toast.error(error.response?.data?.message || "Failed to cancel appointment");
+            toast.error(error.response.data.message || "Failed to cancel appointment");
         }
     };
 
@@ -69,7 +69,7 @@ export const DoctorProvider = ({ children }) => {
             toast.success(res.data.message);
         } catch (error) {
             console.log(error);
-            toast.error(error.response?.data?.message || "Failed to cancel appointment");
+            toast.error(error.response.data.message || "Failed to cancel appointment");
         }
     };
 
